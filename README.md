@@ -1,6 +1,5 @@
 # Frugal Mechanic SBT S3 Resolver
-
-[![Build Status](https://travis-ci.org/frugalmechanic/fm-sbt-s3-resolver.svg?branch=master)](https://travis-ci.org/frugalmechanic/fm-sbt-s3-resolver)
+Forked from [frugalmechanic/fm-sbt-s3-resolver](https://github.com/frugalmechanic/fm-sbt-s3-resolver) 
 
 This SBT plugin adds support for using Amazon S3 for resolving and publishing using s3:// urls.
 
