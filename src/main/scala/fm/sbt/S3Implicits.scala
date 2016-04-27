@@ -18,5 +18,5 @@ package fm.sbt
 object S3Implicits extends S3Implicits
 
 trait S3Implicits {
-  implicit def toS3RawRepository(name: String): S3RawRepository = new S3RawRepository(name)
+  def toS3RawRepository(name: String): S3RawRepository = new S3RawRepository(name)
 }

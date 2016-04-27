@@ -15,14 +15,11 @@
  */
 package fm.sbt
 
-import sbt._
-import Keys._
-
-import java.io.{ByteArrayOutputStream, InputStream}
 import java.net.{URL, URLStreamHandler, URLStreamHandlerFactory}
+
 import org.apache.ivy.util.Message
 import org.apache.ivy.util.url.{URLHandlerDispatcher, URLHandlerRegistry}
-import scala.annotation.tailrec
+import sbt._
 
 /**
  * All this does is register the s3:// url handler with the JVM and IVY
@@ -69,7 +66,7 @@ object S3ResolverPlugin extends AutoPlugin {
   //
   // This sets up the Ivy URLHandler for s3:// URLs
   //
-  private val dispatcher: URLHandlerDispatcher = URLHandlerRegistry.getDefault() match {
+  private val dispatcher: URLHandlerDispatcher = URLHandlerRegistry.getDefault match {
     // If the default is already a URLHandlerDispatcher then just use that
     case disp: URLHandlerDispatcher =>
       info("Using the existing Ivy URLHandlerDispatcher to handle s3:// URLs")

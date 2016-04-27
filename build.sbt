@@ -1,6 +1,6 @@
 name := "fm-sbt-s3-resolver"
 
-organization := "com.frugalmechanic"
+organization := "org.riverframework"
 
 version := "0.10.0-SNAPSHOT"
 
@@ -8,7 +8,7 @@ description := "SBT S3 Resolver Plugin"
 
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
-homepage := Some(url("https://github.com/frugalmechanic/sbt-s3-resolver"))
+homepage := Some(url("https://github.com/mariosotil/sbt-s3-resolver"))
 
 sbtPlugin := true
 
@@ -17,12 +17,11 @@ EclipseKeys.withSource := true
 // Don't use the default "target" directory (which is what SBT uses)
 EclipseKeys.eclipseOutput := Some(".target")
 
-val amazonSDKVersion = "1.10.35"
+val amazonSDKVersion = "1.10.73"
 
 libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-java-sdk-s3" % amazonSDKVersion,
   "com.amazonaws" % "aws-java-sdk-sts" % amazonSDKVersion,
-  "joda-time" % "joda-time" % "2.9.1" force(), //This is to fix https://github.com/aws/aws-sdk-java/issues/484
   "org.apache.ivy" % "ivy" % "2.3.0"
 )
 
@@ -40,7 +39,9 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
-pomExtra := (
+scalacOptions += "-feature"
+
+pomExtra :=
   <developers>
     <developer>
       <id>tim</id>
@@ -49,10 +50,17 @@ pomExtra := (
       <organization>Frugal Mechanic</organization>
       <organizationUrl>http://frugalmechanic.com</organizationUrl>
     </developer>
+    <developer>
+      <id>mario</id>
+      <name>Mario Sotil</name>
+      <email>mario.sotil@gmail.com</email>
+      <organization>River Framework</organization>
+      <organizationUrl>http://riverframework.org</organizationUrl>
+    </developer>
   </developers>
   <scm>
       <connection>scm:git:git@github.com:frugalmechanic/sbt-s3-resolver.git</connection>
       <developerConnection>scm:git:git@github.com:frugalmechanic/sbt-s3-resolver.git</developerConnection>
       <url>git@github.com:frugalmechanic/sbt-s3-resolver.git</url>
-  </scm>)
+  </scm>
 
